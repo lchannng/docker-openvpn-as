@@ -4,8 +4,8 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:bionic
 ARG BUILD_DATE
 ARG VERSION
 ARG OPENVPNAS_VERSION 
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="aptalca"
+LABEL build_version="${VERSION} Build-date:- ${BUILD_DATE}"
+
 
 # environment settings
 ARG DEBIAN_FRONTEND="noninteractive"

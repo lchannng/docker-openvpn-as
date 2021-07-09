@@ -9,7 +9,6 @@ variables:
   CI_PROJECT_PATH: "fabianbees/openvpn-as"
   OPENVPNAS_VERSION: ""
   VERSION: "2.9.2"
-  BUILD_DATE: ""
 
 # Build Stages
 stages:

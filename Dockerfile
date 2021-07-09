@@ -1,4 +1,5 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:bionic
+#FROM ghcr.io/linuxserver/baseimage-ubuntu:bionic
+FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
 
 # set version label
 ARG BUILD_DATE
@@ -22,8 +23,6 @@ RUN \
 	libatm1 \
 	libelf1 \
 	libexpat1 \
-	libip4tc0 \
-	libip6tc0 \
 	libiptc0 \
 	liblzo2-2 \
 	libmagic-mgc \
@@ -31,16 +30,15 @@ RUN \
 	libmariadb3 \
 	libmnl0 \
 	libmpdec2 \
-	libmysqlclient20 \
+	libmysqlclient21 \
 	libnetfilter-conntrack3 \
 	libnfnetlink0 \
 	libpcap0.8 \
 	libpython3-stdlib \
-	libpython3.6-minimal \
-	libpython3.6-stdlib \
+	libpython3.8-minimal \
+	libpython3.8-stdlib \
 	libxtables12 \
 	mime-support \
-	multiarch-support \
 	mysql-common \
 	net-tools \
 	python3 \
@@ -56,15 +54,15 @@ RUN \
 	python3-sqlalchemy \
 	python3-sqlparse \
 	python3-tempita \
-	python3.6 \
-	python3.6-minimal \
+	python3.8 \
+	python3.8-minimal \
 	sqlite3 \
 	xz-utils && \
  echo "**** add openvpn-as repo ****" && \
  curl -s https://as-repository.openvpn.net/as-repo-public.gpg | apt-key add - && \
- echo "deb http://as-repository.openvpn.net/as/debian bionic main">/etc/apt/sources.list.d/openvpn-as-repo.list && \
+ echo "deb http://as-repository.openvpn.net/as/debian focal main">/etc/apt/sources.list.d/openvpn-as-repo.list && \
  if [ -z ${OPENVPNAS_VERSION+x} ]; then \
-	OPENVPNAS_VERSION=$(curl -sX GET http://as-repository.openvpn.net/as/debian/dists/bionic/main/binary-amd64/Packages.gz | gunzip -c \
+	OPENVPNAS_VERSION=$(curl -sX GET http://as-repository.openvpn.net/as/debian/dists/focal/main/binary-amd64/Packages.gz | gunzip -c \
 	|grep -A 7 -m 1 "Package: openvpn-as" | awk -F ": " '/Version/{print $2;exit}');\
  fi && \
  echo "$OPENVPNAS_VERSION" > /version.txt && \

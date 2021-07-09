@@ -32,6 +32,7 @@ The architectures supported by this image are:
 | Architecture | Tag |
 | :----: | --- |
 | x86-64 | latest |
+| arm64 | latest |
 
 ## Version Tags
 

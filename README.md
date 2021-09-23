@@ -40,7 +40,7 @@ This image provides various versions that are available via tags. `latest` tag u
 
 | Tag | Description |
 | :----: | --- |
-| latest | Stable releases based on ubuntu bionic |
+| latest | Stable releases based on ubuntu focal |
 
 
 ## Application Setup
@@ -78,7 +78,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Europe/Berlin
       - INTERFACE=eth0 #optional
     volumes:
       - <path to data>:/config
@@ -97,7 +97,7 @@ docker run -d \
   --cap-add=NET_ADMIN \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Europe/London \
+  -e TZ=Europe/Berlin \
   -e INTERFACE=eth0 `#optional` \
   -p 943:943 \
   -p 9443:9443 \
@@ -164,7 +164,6 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 
 ## Updating Info
 
-Most of our images are static, versioned, and require an image update and container recreation to update the app inside. With some exceptions (ie. nextcloud, plex), we do not recommend or support updating apps inside the container. Please consult the [Application Setup](#application-setup) section above to see if it is recommended for the image.
 
 Below are the instructions for updating containers:
 
@@ -197,11 +196,9 @@ Below are the instructions for updating containers:
 
 * You can also remove the old dangling images: `docker image prune`
 
-**Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using [Docker Compose](https://docs.linuxserver.io/general/docker-compose).
 
-### Image Update Notifications - Diun (Docker Image Update Notifier)
 
-* We recommend [Diun](https://crazymax.dev/diun/) for update notifications. Other tools that automatically update containers unattended are not recommended or supported.
+
 
 ## Building locally
 
@@ -213,7 +210,7 @@ cd docker-openvpn-as
 docker build \
   --no-cache \
   --pull \
-  -t fabianbees/openvpn-as:latest .
+  -t yourname/openvpn-as:latest .
 ```
 
 The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`
@@ -226,6 +223,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **01.07.20:** - Rebase master/latest to focal.
 * **15.06.20:** - Add fixes for 2.9.0.
 * **04.11.20:** - `xenial` tag is deprecated and there will be no further releases for that tag.
 * **22.06.20:** - Added Support for persistent Customization Folders.

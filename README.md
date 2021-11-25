@@ -45,7 +45,26 @@ This image provides various versions that are available via tags. `latest` tag u
 
 ## Application Setup
 
-The admin interface is available at `https://DOCKER-HOST-IP:943/admin` (assuming bridge mode) with a default user/password of admin/password
+The admin interface is available at `https://DOCKER-HOST-IP:943/admin` (assuming bridge mode).
+
+### Default user/password
+
+With 2.10.0 the default user/password has to be changed to meet the new password requirements of openvpn, so the new default login for versions after 2.10.0 are:
+```
+Since version 2.10.0
+
+user:       admin
+password:   passwOrd+2
+```
+
+Until version 2.9.6 please use the following as the default login credentials:
+```
+Until version 2.9.6
+
+user:       admin
+password:   password
+```
+
 
 During first login, make sure that the "Authentication" in the webui is set to "Local" instead of "PAM". Then set up the user accounts with their passwords (user accounts created under PAM do not survive container update or recreation).
 

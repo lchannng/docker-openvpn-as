@@ -69,7 +69,7 @@ RUN \
  usermod -d /config abc && \
  echo "**** create admin user and set default password for it ****" && \
  useradd -s /sbin/nologin admin && \
- echo "admin:password" | chpasswd && \
+ echo "admin:passwOrd+2" | chpasswd && \
  rm -rf \
 	/tmp/*
 

@@ -93,7 +93,7 @@ services:
     image: fabianbees/openvpn-as
     container_name: openvpn-as
     cap_add:
-      - NET_ADMIN
+      - NET_ADMIN #required!
     environment:
       - PUID=1000
       - PGID=1000
@@ -113,7 +113,7 @@ services:
 ```bash
 docker run -d \
   --name=openvpn-as \
-  --cap-add=NET_ADMIN \
+  --cap-add=NET_ADMIN `#required!` \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/Berlin \
